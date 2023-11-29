@@ -19,7 +19,7 @@ const renderPosts = function (posts) {
       $("#" + posts[p].id).append("<div></div>")
       $("#" + posts[p].id).append(newtext)
       $("#" + posts[p].id).append(newbtn)
-      const delBtn = "<br><br><button class= delete id = delete" + posts[p].id + " data-btn=delete> Delete Post </button>"
+      const delBtn = "<br><br><button class= delete id = d" + posts[p].id + " data-btn=delete> Delete Post </button>"
       $("#" + posts[p].id).append(delBtn)
 
    }

@@ -15,7 +15,7 @@ $("#posts").on("click", "button", function () {
     const path = $(this).attr('id')
     const dataDeletBtn = $(this).data("btn")
     if (dataDeletBtn === "delete") {
-        tweeter.removePost(path.slice(-2))
+        tweeter.removePost(path.slice(1))
         const ren = tweeter.getPosts()
         renderPosts(ren)
         return
