@@ -5,9 +5,13 @@ render = renderPosts(res)
 
 const post = function () {
     const np = $("#input").val()
+    if(!np){
+        alert("Plaese Enter a post!!")
+    }else{
     tweeter.addPost(np)
     const ren = tweeter.getPosts()
     renderPosts(ren)
+    }
 }
 
 $("#posts").on("click", "button", function () {
@@ -21,9 +25,13 @@ $("#posts").on("click", "button", function () {
         return
     } else {
         const nc = $("#t" + path).val()
+        if(!nc){
+            alert("Plaese Enter a comment!!")
+        }else{
         tweeter.addComment(nc, path)
         const ren = tweeter.getPosts()
         renderPosts(ren)
+        }
     }
 })
 
