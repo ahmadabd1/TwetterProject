@@ -2,7 +2,9 @@
 const renderPosts = function (posts) {
 
    $("#posts").empty()
+   $("#input").text =""
    $("#posts").addClass("posts")
+   
    for (let p in posts) {
 
       const newElemntPost = "<div  class= post id=" + posts[p].id + ">" + posts[p].text + "</div>"
@@ -14,8 +16,10 @@ const renderPosts = function (posts) {
          const newElemntComment = "<div class= ></div><div class = comments id=" + posts[p].comments[pc].id + ">" + deletX + " " + posts[p].comments[pc].text + "</div>"
          $("#" + posts[p].id).append(newElemntComment)
       }
+
       const newtext = "<input id =t" + posts[p].id + " type=text placeholder= comment? >"
       const newbtn = "<button class = commentbtn id =" + posts[p].id + ">comment</button>"
+
       $("#" + posts[p].id).append("<div></div>")
       $("#" + posts[p].id).append(newtext)
       $("#" + posts[p].id).append(newbtn)

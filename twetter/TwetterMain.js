@@ -1,36 +1,41 @@
 const tweeter = postsMange()
 const res = tweeter.getPosts()
+const render = renderPosts(res)
 
-render = renderPosts(res)
+const input = $("#input")
 
+
+const mrnder = function(){
+    renderPosts(tweeter.getPosts())
+}
 const post = function () {
-    const np = $("#input").val()
-    if(!np){
+    const postVal = input.val()
+    input.val("")
+    if(!postVal){
         alert("Plaese Enter a post!!")
     }else{
-    tweeter.addPost(np)
-    const ren = tweeter.getPosts()
-    renderPosts(ren)
+    tweeter.addPost(postVal)
+    mrnder()
+    
     }
 }
 
 $("#posts").on("click", "button", function () {
 
-    const path = $(this).attr('id')
+    const buttonId = $(this).attr('id')
     const dataDeletBtn = $(this).data("btn")
+
     if (dataDeletBtn === "delete") {
-        tweeter.removePost(path.slice(1))
-        const ren = tweeter.getPosts()
-        renderPosts(ren)
+        tweeter.removePost(buttonId.slice(1))
+        mrnder()
         return
     } else {
-        const nc = $("#t" + path).val()
-        if(!nc){
+        const buttonIdVal = $("#t" + buttonId).val()
+        if(!buttonIdVal){
             alert("Plaese Enter a comment!!")
         }else{
-        tweeter.addComment(nc, path)
-        const ren = tweeter.getPosts()
-        renderPosts(ren)
+        tweeter.addComment(buttonIdVal, buttonId)
+        mrnder()
         }
     }
 })
@@ -38,7 +43,7 @@ $("#posts").on("click", "button", function () {
 $("#posts").on("click", "span", function () {
 
     tweeter.removeComment($(this).data("span"), $(this).parent().attr('id'))
-    const ren = tweeter.getPosts()
-    renderPosts(ren)
+    mrnder()
 
 })
+
